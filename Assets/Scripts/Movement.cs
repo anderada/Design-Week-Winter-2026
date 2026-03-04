@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
 
     public float footSpeed = 3.0f;
     public float lerpSpeed = 0.04f;
-    public float footRaiseHeight = 0.3f;
+    public float footRaiseHeight = 1f;
 
     public bool leftFootRaised = false;
     public bool rightFootRaised = false;
