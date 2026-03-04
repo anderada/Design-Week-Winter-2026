@@ -10,12 +10,17 @@ public class Movement : MonoBehaviour
 
     Vector3 LeftFootPos;
     Vector3 RightFootPos;
+    Vector3 playerRoot;
 
-    public float stepRadius = 1.75f;
+    public float stepRadius = 1.5f;
+
+    public float footSpeed = 3.0f;
 
     // Update is called once prer frame
     void Update()
     {
+        playerRoot = transform.position;
+        playerRoot.y = 0;
         MoveLeftFoot();
         MoveRightFoot();
         MoveCapsule();
@@ -27,20 +32,22 @@ public class Movement : MonoBehaviour
         Vector3 inputVer = Input.GetAxis("LF_Ver") * mainCamera.transform.forward;
         Vector3 raw_input = inputHor + inputVer;
         raw_input.y = 0;
+        raw_input *= footSpeed;
         Vector3 distanceToFoot = LeftFoot.transform.position + (raw_input * Time.deltaTime);
-        distanceToFoot = transform.position - distanceToFoot;
+        distanceToFoot = playerRoot - distanceToFoot;
         if(math.abs(distanceToFoot.magnitude) <= stepRadius){
             LeftFoot.transform.localPosition += raw_input * Time.deltaTime;
             LeftFoot.transform.rotation = Quaternion.Euler(0,mainCamera.transform.localRotation.eulerAngles.y,0);
         }
-        /*else
+        else
         {
-            distanceToFoot.Normalize();
-            distanceToFoot *= stepRadius;
-            Vector3 circlePosition = transform.position + distanceToFoot;
-            circlePosition.y = 0;
-            LeftFoot.transform.position = circlePosition;
-        }*/
+            Vector3 desiredPosition = LeftFoot.transform.localPosition + (raw_input * Time.deltaTime);
+            desiredPosition = desiredPosition - playerRoot;
+            desiredPosition.Normalize();
+            desiredPosition = desiredPosition * stepRadius;
+            desiredPosition = desiredPosition + playerRoot;
+            LeftFoot.transform.localPosition = desiredPosition;
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             LeftFootPos = LeftFoot.transform.position;
@@ -52,12 +59,22 @@ public class Movement : MonoBehaviour
         Vector3 inputVer = Input.GetAxis("RF_Ver") * mainCamera.transform.forward;
         Vector3 raw_input = inputHor + inputVer;
         raw_input.y = 0;
+        raw_input *= footSpeed;
         Vector3 distanceToFoot = RightFoot.transform.position + (raw_input * Time.deltaTime);
-        distanceToFoot = transform.position - distanceToFoot;
+        distanceToFoot = playerRoot - distanceToFoot;
         if (math.abs(distanceToFoot.magnitude) <= stepRadius)
         {
             RightFoot.transform.localPosition += raw_input * Time.deltaTime;
             RightFoot.transform.rotation = Quaternion.Euler(0, mainCamera.transform.localRotation.eulerAngles.y, 0);
+        }
+        else
+        {
+            Vector3 desiredPosition = RightFoot.transform.localPosition + (raw_input * Time.deltaTime);
+            desiredPosition = desiredPosition - playerRoot;
+            desiredPosition.Normalize();
+            desiredPosition = desiredPosition * stepRadius;
+            desiredPosition = desiredPosition + playerRoot;
+            RightFoot.transform.localPosition = desiredPosition;
         }
         if (Input.GetKeyDown(KeyCode.RightControl))
         {

@@ -180,7 +180,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -557,6 +557,8 @@ MonoBehaviour:
   LeftFoot: {fileID: 2032414369}
   RightFoot: {fileID: 995961376}
   mainCamera: {fileID: 330585543}
+  stepRadius: 1.75
+  footSpeed: 5
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,7 +1025,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fe9d72dc18bde804bac65aaded2f5f80, type: 2}
+  - {fileID: 2100000, guid: d081c5187dfae48428438163a595d000, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
