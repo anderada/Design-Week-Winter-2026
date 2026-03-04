@@ -15,6 +15,10 @@ public class Movement : MonoBehaviour
     public float stepRadius = 1.5f;
 
     public float footSpeed = 3.0f;
+    public float footRaiseHeight = 0.3f;
+
+    public bool leftFootRaised = false;
+    public bool rightFootRaised = false;
 
     // Update is called once prer frame
     void Update()
@@ -33,6 +37,12 @@ public class Movement : MonoBehaviour
         Vector3 raw_input = inputHor + inputVer;
         raw_input.y = 0;
         raw_input *= footSpeed;
+
+        if(math.abs(raw_input.magnitude) > 0.2)
+        {
+            leftFootRaised = true;
+        }
+
         Vector3 distanceToFoot = LeftFoot.transform.position + (raw_input * Time.deltaTime);
         distanceToFoot = playerRoot - distanceToFoot;
         if(math.abs(distanceToFoot.magnitude) <= stepRadius){
@@ -51,6 +61,16 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             LeftFootPos = LeftFoot.transform.position;
+            leftFootRaised = false;
+        }
+
+        if (leftFootRaised)
+        {
+            LeftFoot.transform.localPosition = new Vector3(LeftFoot.transform.localPosition.x, footRaiseHeight, LeftFoot.transform.localPosition.z);
+        }
+        else
+        {
+            LeftFoot.transform.localPosition = new Vector3(LeftFoot.transform.localPosition.x, 0.0f, LeftFoot.transform.localPosition.z);
         }
     }
     void MoveRightFoot()
@@ -60,6 +80,12 @@ public class Movement : MonoBehaviour
         Vector3 raw_input = inputHor + inputVer;
         raw_input.y = 0;
         raw_input *= footSpeed;
+
+        if (math.abs(raw_input.magnitude) > 0.2)
+        {
+            rightFootRaised = true;
+        }
+
         Vector3 distanceToFoot = RightFoot.transform.position + (raw_input * Time.deltaTime);
         distanceToFoot = playerRoot - distanceToFoot;
         if (math.abs(distanceToFoot.magnitude) <= stepRadius)
@@ -79,6 +105,16 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
             RightFootPos = RightFoot.transform.position;
+            rightFootRaised = false;
+        }
+
+        if (rightFootRaised)
+        {
+            RightFoot.transform.localPosition = new Vector3(RightFoot.transform.localPosition.x, footRaiseHeight, RightFoot.transform.localPosition.z);
+        }
+        else
+        {
+            RightFoot.transform.localPosition = new Vector3(RightFoot.transform.localPosition.x, 0.0f, RightFoot.transform.localPosition.z);
         }
     }
 
