@@ -139,7 +139,7 @@ public class Movement : MonoBehaviour
             desiredPosition = desiredPosition + playerRoot;
             RightTarget = desiredPosition;
         }
-        if (Input.GetKeyDown(KeyCode.RightControl))
+        if (Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.RightShift))
         {
             RightFootPos = RightFoot.transform.position;
             rightFootRaised = false;
