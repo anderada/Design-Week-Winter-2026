@@ -106,6 +106,7 @@ public class Movement : MonoBehaviour
             LeftFootPos = LeftFoot.transform.position;
             leftFootRaised = false;
             leftFootActive = false;
+            LeftFoot.GetComponent<Foot>().Stomp();
         }
 
         if (leftFootRaised)
@@ -152,6 +153,7 @@ public class Movement : MonoBehaviour
             RightFootPos = RightFoot.transform.position;
             rightFootRaised = false;
             leftFootActive = true;
+            RightFoot.GetComponent<Foot>().Stomp();
         }
 
         if (rightFootRaised)

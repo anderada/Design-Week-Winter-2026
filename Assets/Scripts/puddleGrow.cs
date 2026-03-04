@@ -11,9 +11,13 @@ public class puddleGrow : MonoBehaviour
     }
     public void StartTimer()
     {
-        Debug.Log("test");
         growTimer = growTime;
         GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    public void setColor(Color col)
+    {
+        GetComponent<MeshRenderer>().material.color = col;
     }
 
     private void Update()
