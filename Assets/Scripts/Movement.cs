@@ -1,5 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Movement : MonoBehaviour
 {
@@ -16,25 +17,26 @@ public class Movement : MonoBehaviour
     Vector3 RightTarget;
     Vector3 CapsuleTarget;
 
-    float leftStompCooldown = 0.0f;
-    float rightStompCooldown = 0.0f;
-
     public float stepRadius = 1.5f;
 
     public float footSpeed = 3.0f;
     public float lerpSpeed = 0.04f;
     public float footRaiseHeight = 0.3f;
-    public float stompCooldownTime = 1.0f;
 
     public bool leftFootRaised = false;
     public bool rightFootRaised = false;
 
+    bool leftFootActive = true;
 
     private void Start()
     {
         LeftTarget = LeftFoot.transform.position;
         RightTarget = RightFoot.transform.position;
         CapsuleTarget = transform.position;
+        LeftFootPos = LeftFoot.transform.position;
+        RightFootPos = RightFoot.transform.position;
+
+        UnityEngine.Cursor.lockState = CursorLockMode.Confined;
     }
 
     // Update is called once prer frame
@@ -42,15 +44,25 @@ public class Movement : MonoBehaviour
     {
         playerRoot = transform.position;
         playerRoot.y = 0;
-        MoveLeftFoot();
-        MoveRightFoot();
+        CursorControls();
+        if ( leftFootActive ) 
+            MoveLeftFoot();
+        else
+            MoveRightFoot();
         MoveCapsule();
         Slide();
+    }
 
-        if (leftStompCooldown > 0.0f)
-            leftStompCooldown -= Time.deltaTime;
-        if (rightStompCooldown > 0.0f)
-            rightStompCooldown -= Time.deltaTime;
+    void CursorControls()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+        }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+        }
     }
 
     void Slide()
@@ -62,8 +74,6 @@ public class Movement : MonoBehaviour
 
     void MoveLeftFoot()
     {
-        if (leftStompCooldown > 0.0f)
-            return;
 
         Vector3 inputHor = Input.GetAxis("LF_Hor") * mainCamera.transform.right;
         Vector3 inputVer = Input.GetAxis("LF_Ver") * mainCamera.transform.forward;
@@ -95,7 +105,7 @@ public class Movement : MonoBehaviour
         {
             LeftFootPos = LeftFoot.transform.position;
             leftFootRaised = false;
-            leftStompCooldown = stompCooldownTime;
+            leftFootActive = false;
         }
 
         if (leftFootRaised)
@@ -109,11 +119,9 @@ public class Movement : MonoBehaviour
     }
     void MoveRightFoot()
     {
-        if (rightStompCooldown > 0.0f)
-            return;
 
-        Vector3 inputHor = Input.GetAxis("RF_Hor") * mainCamera.transform.right;
-        Vector3 inputVer = Input.GetAxis("RF_Ver") * mainCamera.transform.forward;
+        Vector3 inputHor = Input.GetAxis("LF_Hor") * mainCamera.transform.right;
+        Vector3 inputVer = Input.GetAxis("LF_Ver") * mainCamera.transform.forward;
         Vector3 raw_input = inputHor + inputVer;
         raw_input.y = 0;
         raw_input *= footSpeed;
@@ -139,11 +147,11 @@ public class Movement : MonoBehaviour
             desiredPosition = desiredPosition + playerRoot;
             RightTarget = desiredPosition;
         }
-        if (Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             RightFootPos = RightFoot.transform.position;
             rightFootRaised = false;
-            rightStompCooldown = stompCooldownTime;
+            leftFootActive = true;
         }
 
         if (rightFootRaised)
