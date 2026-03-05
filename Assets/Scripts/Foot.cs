@@ -14,7 +14,7 @@ public class Foot : MonoBehaviour
     public void Stomp()
     {
         GameObject newSplat = Instantiate(splat);
-        newSplat.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        newSplat.transform.position = new Vector3(transform.position.x, 0.01f, transform.position.z);
         newSplat.GetComponent<MeshRenderer>().material.color = splatColor;
     }
 }
