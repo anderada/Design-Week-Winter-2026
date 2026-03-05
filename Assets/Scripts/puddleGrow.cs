@@ -11,7 +11,6 @@ public class puddleGrow : MonoBehaviour
     }
     public void StartTimer()
     {
-        Debug.Log("test");
         growTimer = growTime;
         GetComponent<MeshRenderer>().enabled = true;
     }
