@@ -28530,7 +28530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 774690484}
-  - component: {fileID: 774690483}
+  - component: {fileID: 774690485}
   m_Layer: 0
   m_Name: Settings Manager
   m_TagString: Untagged
@@ -28538,20 +28538,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &774690483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 774690482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafb9509a75d21a46be8ff77ed0f1a17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
-  leftToggleInstance: {fileID: 1311876405}
-  rightToggleInstance: {fileID: 1346289865}
 --- !u!4 &774690484
 Transform:
   m_ObjectHideFlags: 0
@@ -28567,6 +28553,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &774690485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774690482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d18e67b9b27dd48ac45ab9858c72c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
+  leftToggleInstance: {fileID: 1311876405}
+  rightToggleInstance: {fileID: 1346289865}
 --- !u!1001 &775030476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45413,8 +45413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafb9509a75d21a46be8ff77ed0f1a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  leftToggleInstance: {fileID: 0}
-  rightToggleInstance: {fileID: 0}
 --- !u!1001 &1313470435
 PrefabInstance:
   m_ObjectHideFlags: 0
