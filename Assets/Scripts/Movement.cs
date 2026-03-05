@@ -1,5 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class Movement : MonoBehaviour
@@ -51,6 +52,11 @@ public class Movement : MonoBehaviour
             MoveRightFoot();
         MoveCapsule();
         Slide();
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     void CursorControls()
