@@ -28,6 +28,9 @@ public class Movement : MonoBehaviour
 
     bool leftFootActive = true;
 
+    Rigidbody rb;
+
+
     private void Start()
     {
         LeftTarget = LeftFoot.transform.position;
@@ -37,6 +40,8 @@ public class Movement : MonoBehaviour
         RightFootPos = RightFoot.transform.position;
 
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+        rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once prer frame
@@ -51,6 +56,11 @@ public class Movement : MonoBehaviour
             MoveRightFoot();
         MoveCapsule();
         Slide();
+    }
+
+    void FixedUpdate()
+    {
+        rb.MovePosition(CapsuleTarget);
     }
 
     void CursorControls()
@@ -69,7 +79,9 @@ public class Movement : MonoBehaviour
     {
         LeftFoot.transform.position = Vector3.Lerp(LeftFoot.transform.position, LeftTarget, lerpSpeed);
         RightFoot.transform.position = Vector3.Lerp(RightFoot.transform.position, RightTarget, lerpSpeed);
-        transform.position = Vector3.Lerp(transform.position, CapsuleTarget, lerpSpeed);
+        // transform.position = Vector3.Lerp(transform.position, CapsuleTarget, lerpSpeed);
+        Vector3 target = Vector3.Lerp(transform.position, CapsuleTarget, lerpSpeed);
+        CapsuleTarget = target;
         footSpeed = Mathf.Lerp(footSpeed, 3.0f, 0.005f);
         stepRadius = Mathf.Lerp(stepRadius, 1.5f, 0.02f);
     }
@@ -174,6 +186,10 @@ public class Movement : MonoBehaviour
 
     void MoveCapsule()
     {
-        CapsuleTarget = new Vector3((LeftFootPos.x + RightFootPos.x) / 2f, transform.position.y, (LeftFootPos.z + RightFootPos.z) / 2f);
+        CapsuleTarget = new Vector3(
+            (LeftFootPos.x + RightFootPos.x) / 2f,
+            transform.position.y,
+            (LeftFootPos.z + RightFootPos.z) / 2f
+        );
     }
 }
