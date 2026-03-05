@@ -159,6 +159,9 @@ MonoBehaviour:
   color: {r: 0.8509804, g: 0.16470587, b: 0.49549076, a: 1}
   spawn: []
   gnome: 0
+  lego: 0
+  cameraShakeTime: 0.1
+  cameraShakeAmmount: 0.01
 --- !u!65 &1510707554731453287
 BoxCollider:
   m_ObjectHideFlags: 0
