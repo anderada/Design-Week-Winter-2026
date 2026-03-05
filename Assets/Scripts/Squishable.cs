@@ -20,6 +20,7 @@ public class Squishable : MonoBehaviour
     waterLevel water;
     public float cameraShakeTime = 0.1f;
     public float cameraShakeAmmount = 0.1f;
+    AudioSource sound;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class Squishable : MonoBehaviour
         particleMaterial.startColor = color;
         cam = FindAnyObjectByType<Camera_Rotation>();
         water = FindAnyObjectByType<waterLevel>();
+        sound = GetComponentInChildren<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,6 +41,11 @@ public class Squishable : MonoBehaviour
         {
             Destroy(thingToSquish);
             cam.ScreenShake(cameraShakeTime, cameraShakeAmmount);
+            if (sound != null)
+            {
+                sound.pitch = Random.Range(0.8f, 1.2f);
+                sound.Play();
+            }
             if(raiseWater)
                 water.RaiseWater();
             if (puddle != null)
