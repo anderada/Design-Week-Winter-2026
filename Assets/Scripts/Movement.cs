@@ -1,7 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class Movement : MonoBehaviour
 {
@@ -46,16 +45,27 @@ public class Movement : MonoBehaviour
         playerRoot = transform.position;
         playerRoot.y = 0;
         CursorControls();
+
         if ( leftFootActive ) 
             MoveLeftFoot();
         else
             MoveRightFoot();
+
         MoveCapsule();
         Slide();
 
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        UpdateFootToggles();
+    }
+    void UpdateFootToggles()
+    {
+        if (SettingsManager.leftToggle != null && SettingsManager.rightToggle != null)
+        {
+            SettingsManager.leftToggle.isOn = leftFootActive;
+            SettingsManager.rightToggle.isOn = !leftFootActive;
         }
     }
 
