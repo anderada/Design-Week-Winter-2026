@@ -71,7 +71,7 @@ public class Movement : MonoBehaviour
         RightFoot.transform.position = Vector3.Lerp(RightFoot.transform.position, RightTarget, lerpSpeed);
         transform.position = Vector3.Lerp(transform.position, CapsuleTarget, lerpSpeed);
         footSpeed = Mathf.Lerp(footSpeed, 3.0f, 0.005f);
-        stepRadius = Mathf.Lerp(stepRadius, 1.5f, 0.005f);
+        stepRadius = Mathf.Lerp(stepRadius, 1.5f, 0.02f);
     }
 
     void MoveLeftFoot()
@@ -92,7 +92,7 @@ public class Movement : MonoBehaviour
         distanceToFoot = playerRoot - distanceToFoot;
         if(math.abs(distanceToFoot.magnitude) <= stepRadius){
             LeftTarget += raw_input * Time.deltaTime;
-            LeftFoot.transform.rotation = Quaternion.Euler(0,mainCamera.transform.localRotation.eulerAngles.y,0);
+            LeftFoot.transform.rotation = Quaternion.Euler(0,mainCamera.transform.localRotation.eulerAngles.y + 180f,0);
         }
         else
         {
@@ -141,7 +141,7 @@ public class Movement : MonoBehaviour
         if (math.abs(distanceToFoot.magnitude) <= stepRadius)
         {
             RightTarget += raw_input * Time.deltaTime;
-            RightFoot.transform.rotation = Quaternion.Euler(0, mainCamera.transform.localRotation.eulerAngles.y, 0);
+            RightFoot.transform.rotation = Quaternion.Euler(0, mainCamera.transform.localRotation.eulerAngles.y + 180f, 0);
         }
         else
         {
