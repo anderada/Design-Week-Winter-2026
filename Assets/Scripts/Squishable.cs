@@ -15,7 +15,9 @@ public class Squishable : MonoBehaviour
     bool squished = false;
     public bool gnome = false;
     public bool lego = false;
+    public bool raiseWater = false;
     Camera_Rotation cam;
+    waterLevel water;
     public float cameraShakeTime = 0.1f;
     public float cameraShakeAmmount = 0.1f;
 
@@ -25,6 +27,7 @@ public class Squishable : MonoBehaviour
         var particleMaterial = squishParticles.main;
         particleMaterial.startColor = color;
         cam = FindAnyObjectByType<Camera_Rotation>();
+        water = FindAnyObjectByType<waterLevel>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,6 +39,8 @@ public class Squishable : MonoBehaviour
         {
             Destroy(thingToSquish);
             cam.ScreenShake(cameraShakeTime, cameraShakeAmmount);
+            if(raiseWater)
+                water.RaiseWater();
             if (puddle != null)
             {
                 squishParticles.Play();
