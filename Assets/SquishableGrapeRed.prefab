@@ -154,9 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Squishable
   squishParticles: {fileID: 22668084266476448}
   puddle: {fileID: 108514630145592008}
-  thing: {fileID: 8432610442673672591}
+  thingToSquish: {fileID: 8432610442673672591}
+  brokenHalf: {fileID: 0}
   color: {r: 0.88235295, g: 0.28235295, b: 0.30980393, a: 1}
-  spawn: {fileID: 0}
+  spawn: []
   gnome: 0
 --- !u!65 &1510707554731453287
 BoxCollider:
