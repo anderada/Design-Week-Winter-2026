@@ -54,7 +54,6 @@ public class Squishable : MonoBehaviour
                 for (int i = 0; i < 3; i++)
                 {
                     int dice = Random.Range(0,spawn.Length - 1);
-                    Debug.Log(dice);
                     GameObject child = Instantiate(spawn[dice]);
                     child.transform.position = transform.position + new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f));
                 }
