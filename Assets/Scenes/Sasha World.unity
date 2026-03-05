@@ -8068,8 +8068,20 @@ PrefabInstance:
       value: LegoSquishable
       objectReference: {fileID: 0}
     - target: {fileID: 8082326319118636392, guid: e204d011c45fe4d4791af41ef2bc4469, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.0076
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082326319118636392, guid: e204d011c45fe4d4791af41ef2bc4469, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.0076
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082326319118636392, guid: e204d011c45fe4d4791af41ef2bc4469, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.0076
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082326319118636392, guid: e204d011c45fe4d4791af41ef2bc4469, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.6499355
+      value: -17.4
       objectReference: {fileID: 0}
     - target: {fileID: 8082326319118636392, guid: e204d011c45fe4d4791af41ef2bc4469, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8077,7 +8089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8082326319118636392, guid: e204d011c45fe4d4791af41ef2bc4469, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.307055
+      value: -11.38
       objectReference: {fileID: 0}
     - target: {fileID: 8082326319118636392, guid: e204d011c45fe4d4791af41ef2bc4469, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15441,7 +15453,7 @@ Transform:
   m_GameObject: {fileID: 787409457}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -91.92196, y: -15.900009, z: 35.611298}
+  m_LocalPosition: {x: -91.92196, y: -15.8, z: 35.611298}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19925,7 +19937,7 @@ Transform:
   m_GameObject: {fileID: 989534810}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.47804, y: 0.00001, z: -7.5513}
+  m_LocalPosition: {x: -4.47804, y: -0.1, z: -7.5513}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
