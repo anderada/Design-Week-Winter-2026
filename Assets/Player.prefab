@@ -32,9 +32,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7078343707076475013}
   - {fileID: 3943565358725513692}
   - {fileID: 887227202061598039}
+  - {fileID: 4100204065839803226}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8875867868087861410
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   LeftFoot: {fileID: 8440278599860377548}
   RightFoot: {fileID: 2212273430699092114}
-  mainCamera: {fileID: 2967781586080845223}
+  mainCamera: {fileID: 2800690284967859888}
   stepRadius: 1.75
   footSpeed: 5
   lerpSpeed: 0.1
@@ -244,6 +244,53 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &2800690284967859888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4100204065839803226}
+  - component: {fileID: 9092718382961378733}
+  m_Layer: 0
+  m_Name: CamPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4100204065839803226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800690284967859888}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.396, z: 0.197}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7078343707076475013}
+  m_Father: {fileID: 8160901556910668767}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9092718382961378733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800690284967859888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdd5835fbbc0c34f8f2f4fd09528521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Camera_Rotation
+  mouse_sensitvity: 100
+  raw_input: {x: 0, y: 0}
 --- !u!1 &2967781586080845223
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,7 +303,6 @@ GameObject:
   - component: {fileID: 467492302569967320}
   - component: {fileID: 957753657588658396}
   - component: {fileID: 7968352290223659636}
-  - component: {fileID: 5665426033588378154}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -272,13 +318,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2967781586080845223}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: 0, y: 1.2, z: 0}
+  m_LocalRotation: {x: 0.10078516, y: -0, z: -0, w: 0.9949082}
+  m_LocalPosition: {x: 0.37000084, y: -0.428, z: -1.4020019}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8160901556910668767}
-  m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
+  m_Father: {fileID: 4100204065839803226}
+  m_LocalEulerAnglesHint: {x: 11.569, y: 0, z: 0}
 --- !u!20 &467492302569967320
 Camera:
   m_ObjectHideFlags: 0
@@ -297,7 +343,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 20.78461
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -312,7 +358,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 80
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -382,20 +428,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!114 &5665426033588378154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2967781586080845223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fdd5835fbbc0c34f8f2f4fd09528521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  mouse_sensitvity: 100
-  raw_input: {x: 0, y: 0}
 --- !u!1 &8440278599860377548
 GameObject:
   m_ObjectHideFlags: 0

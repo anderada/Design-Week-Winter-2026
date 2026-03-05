@@ -31491,9 +31491,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 467492302569967320, guid: e717b50d419886a44b5eb5cf9ec433b9, type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 467492302569967320, guid: e717b50d419886a44b5eb5cf9ec433b9, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 799181756548873200, guid: e717b50d419886a44b5eb5cf9ec433b9, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7968352290223659636, guid: e717b50d419886a44b5eb5cf9ec433b9, type: 3}
+      propertyPath: m_CameraType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8160901556910668767, guid: e717b50d419886a44b5eb5cf9ec433b9, type: 3}
       propertyPath: m_LocalPosition.x
