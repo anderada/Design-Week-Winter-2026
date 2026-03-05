@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections;
 using UnityEngine;
 
 public class Squishable : MonoBehaviour
@@ -6,9 +8,10 @@ public class Squishable : MonoBehaviour
 
     public ParticleSystem squishParticles;
     public GameObject puddle;
-    public GameObject thing;
+    public GameObject thingToSquish;
+    public GameObject brokenHalf;
     public Color color;
-    public GameObject spawn;
+    public GameObject[] spawn;
     bool squished = false;
     public bool gnome = false;
 
@@ -26,7 +29,7 @@ public class Squishable : MonoBehaviour
         Foot foot = other.gameObject.GetComponent<Foot>();
         if (foot != null)
         {
-            Destroy(thing);
+            Destroy(thingToSquish);
             if (puddle != null)
             {
                 squishParticles.Play();
@@ -34,11 +37,19 @@ public class Squishable : MonoBehaviour
                 puddle.GetComponent<puddleGrow>().setColor(color);
                 foot.setSplatColor(color);
             }
-            if (spawn != null)
+            if (brokenHalf != null)
+            {
+                GameObject child = Instantiate(brokenHalf);
+                Vector3 newpos = new Vector3(transform.position.x, 0.0f, transform.position.z);
+                child.transform.position = transform.position;
+            }
+            if (spawn != null && spawn.Length > 0)
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    GameObject child = Instantiate(spawn);
+                    int dice = Random.Range(0,spawn.Length - 1);
+                    Debug.Log(dice);
+                    GameObject child = Instantiate(spawn[dice]);
                     child.transform.position = transform.position + new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f));
                 }
             }

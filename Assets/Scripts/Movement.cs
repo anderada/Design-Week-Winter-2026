@@ -70,6 +70,8 @@ public class Movement : MonoBehaviour
         LeftFoot.transform.position = Vector3.Lerp(LeftFoot.transform.position, LeftTarget, lerpSpeed);
         RightFoot.transform.position = Vector3.Lerp(RightFoot.transform.position, RightTarget, lerpSpeed);
         transform.position = Vector3.Lerp(transform.position, CapsuleTarget, lerpSpeed);
+        footSpeed = Mathf.Lerp(footSpeed, 3.0f, 0.005f);
+        stepRadius = Mathf.Lerp(stepRadius, 1.5f, 0.005f);
     }
 
     void MoveLeftFoot()
@@ -107,6 +109,8 @@ public class Movement : MonoBehaviour
             leftFootRaised = false;
             leftFootActive = false;
             LeftFoot.GetComponent<Foot>().Stomp();
+            footSpeed += 0.5f;
+            stepRadius += 0.25f;
         }
 
         if (leftFootRaised)
@@ -154,6 +158,8 @@ public class Movement : MonoBehaviour
             rightFootRaised = false;
             leftFootActive = true;
             RightFoot.GetComponent<Foot>().Stomp();
+            footSpeed += 1.5f;
+            stepRadius += 0.25f;
         }
 
         if (rightFootRaised)

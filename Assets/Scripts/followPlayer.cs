@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class followPlayer : MonoBehaviour
@@ -11,7 +12,7 @@ public class followPlayer : MonoBehaviour
     {
         if (stop) return;
         Vector3 distanceToPlayer = transform.position - player.transform.position;
-        if (distanceToPlayer.magnitude > 2.0f)
+        if (Math.Abs(distanceToPlayer.magnitude) > 2.0f && Math.Abs(distanceToPlayer.magnitude) < 100.0f)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed);
             transform.position = new Vector3(transform.position.x, 0.0f, transform.position.z);
